@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<htnml lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+</head>
+<body>
+    <button id="incrementButton">Increment</button>
+    <button id="reset-button">Reset</button>
+    <p id="counter-display">0</p>
+</body>
+<script>
+    let count = 0;
+
+    const incrementButton = document.getElementById('incrementButton');
+    const counterDisplay = document.getElementById('counter-display');
+    const resetButton = document.getElementById('reset-button');
+
+    incrementButton.addEventListener('click', () => {
+        count++;
+        counterDisplay.textContent = count;
+    });
+
+    resetButton.addEventListener('click', () => {
+        count = 0;
+        counterDisplay.textContent = count;
+    });
+    
+    // function incrementCount() {
+
+    //     // counterDisplay.textContent = parseInt(counterDisplay.textContent, 10) + 1;
+    //     // console.log('Button clicked');
+    //     // const counterDisplay = document.querySelector('p');
+    //     // let count = parseInt(counterDisplay.textContent, 10);
+    //     // count++;
+    //     // counterDisplay.textContent = count;
+    // }
+    // const button = document.querySelector('button');
+    // const counterDisplay = document.querySelector('p');
+    // let count = 0;
+
+    // button.addEventListener('click', () => {
+    //     count++;
+    //     counterDisplay.textContent = count;
+    // });
+</script>
+</htnml>

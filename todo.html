@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<htnml lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo</title>
+</head>
+<body>
+    <h2>My Todo App</h2>
+    <form id="todo-form">
+        <label for="todo-description">Description</label>
+        <input name="todo" required id="todo-description" type="text">
+
+        <input type="submit" value="Create">
+    </form>
+
+    <ol id="todo-list"></ol>
+</body>
+<script>
+    const todos = [];
+    const todoForm = document.getElementById('todo-form');
+    const todoList = document.getElementById('todo-list');
+
+    renderList();
+
+    todoForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent the form from submitting normally
+        const data = new FormData(todoForm);
+        const todo = data.get('todo');
+        
+        todos.push(todo); // Add the new todo to the array
+
+        renderList();
+        // const li = document.createElement('li');
+        // li.textContent = todo;
+        // todoList.appendChild(li);
+
+        todoForm.reset(); // Clear the form input after submission
+        
+
+        console.log(data.get('todo'));
+
+    });
+
+    function renderList() {
+        let listHTML = "";
+
+        for (let i = 0; i < todos.length; i++) {
+            listHTML += `
+            <li>${todos[i]}
+                <button onclick="deleteTodo(${i})">🗑️ Delete</button>
+            </li>
+            `
+        }
+
+        todoList.innerHTML = listHTML;
+        // todoList.innerHTML = ''; // Clear the current list
+        // todos.forEach((todo, index) => {
+        //     const li = document.createElement('li');
+        //     li.textContent = todo;
+        //     const deleteButton = document.createElement('button');
+        //     deleteButton.textContent = '🗑️ Delete';
+        //     deleteButton.addEventListener('click', () => {
+        //         todos.splice(index, 1); // Remove the todo from the array
+        //         renderList(); // Re-render the list
+        //     });
+        //     li.appendChild(deleteButton);
+        //     todoList.appendChild(li);
+        // });
+    }
+
+    function deleteTodo(index) {
+        todos.splice(index, 1); // Remove the todo from the array
+        renderList(); // Re-render the list
+    }
+
+    // todoForm.addEventListener('submit', (e) => {
+    //     e.preventDefault(); // Prevent the form from submitting normally
+    //     console.log('Form submitted');
+    // });
+</script>
+</htnml>
