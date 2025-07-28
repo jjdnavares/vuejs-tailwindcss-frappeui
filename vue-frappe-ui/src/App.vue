@@ -1,5 +1,8 @@
 <template>
-  <div class="p-1">
+ <div>
+  <p class="text-blue-800">The quick brown fox jumps over the lazy dog.</p>
+ </div>
+ <div class="p-1">
   <Button
     :variant="'outline'"
     :ref_for="true"
@@ -17,5 +20,5 @@
 </template>
 
 <script setup>
-import { Button } from 'frappe-ui'
+    import { Button } from 'frappe-ui';
 </script>
